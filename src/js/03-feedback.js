@@ -6,8 +6,8 @@ const formData = {};
 
 const refs = {
     form: document.querySelector('.feedback-form'),
-    inputEl: document.querySelector("[name='email']"),
-    textareaEl: document.querySelector("[name='message']"),
+    email: document.querySelector('input[type="email"]'),
+    message: document.querySelector('textarea[name="message"]'),
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
@@ -33,12 +33,17 @@ function onTextareaInput(e){
 
 function populateTextarea(){
 const savedData = localStorage.getItem(STORAGE_KEY);
+const parsSaveData = JSON.parse(savedData);
 if(savedData){
-    const objData = JSON.parse(savedData);
-    refs.inputEl.value = objData.email;
-    refs.textareaEl.value = objData.message;
+    !parsSaveData.email
+      ? ''
+      : (refs.email.value = parsSaveData.email);
+    !parsSaveData.message
+      ? ''
+      : (refs.message.value = parsSaveData.message);
+  }
   
 }
-}
+
 
 console.log(populateTextarea());
