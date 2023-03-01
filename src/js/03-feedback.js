@@ -26,11 +26,11 @@ function onFormSubmit(evt){
 }
 
 function onTextareaInput(e){
-    const userDetails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-    console.log(userDetails);
-    userDetails[e.target.name] = e.target.value;
+    const formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    console.log(formData);
+    formData[e.target.name] = e.target.value;
   
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(userDetails));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
 function populateTextarea(){
